@@ -1,27 +1,9 @@
 import Title from "@/components/Title";
 import Body from "@/components/Body";
-import MemberCard from "@/components/About/MemberCard";
 import Transparency from "@/components/About/Transparency";
-import { administrators } from "data/administrators";
-import { fiscalCouncil } from "data/fiscalCouncil";
-import Teste from "@/components/Teste";
+import FiscalCouncilList from "../components/About/FiscalCouncil";
+import AdministratorsList from "../components/About/Administrators";
 
-
-const admList = administrators.map(e => {
-  return <MemberCard
-    key={e.name}
-    name={e.name}
-    text={e.description}
-  />
-});
-
-const fiscalCouncilList = fiscalCouncil.map(e => {
-  return <MemberCard
-    key={e.name}
-    name={e.name}
-    text={e.description}
-  />
-});
 
 function About() {
   return (
@@ -34,7 +16,7 @@ function About() {
               content="Membros do Conselho Administrativo"
             />
             <div className="space-y-4">
-              {admList}
+              <AdministratorsList/>
             </div>                   
           </div>
 
@@ -45,13 +27,12 @@ function About() {
                 content="Membros do Conselho Fiscal"
               />  
               <div className="space-y-4">
-                {fiscalCouncilList}
+                <FiscalCouncilList/>
               </div>
             </div>
           </div>  
         </section>
         <section>
-          <Teste/>
         </section>
       </Body>
     </div>

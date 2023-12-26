@@ -54,3 +54,8 @@ function custom_post_type_membros() {
     register_post_type( 'membro', $args );
 }
 add_action( 'init', 'custom_post_type_membros', 0 );
+
+function remover_suporte_categoria() {
+    remove_post_type_support('membros', 'category');
+}
+add_action('init', 'remover_suporte_categoria');

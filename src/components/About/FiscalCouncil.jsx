@@ -9,7 +9,7 @@ function FiscalCouncilList () {
           try {
             const url = `${import.meta.env.VITE_REACT_APP_API_ROOT}/membros`;
             const response = await axios.get(url);
-            const membrosFiltrados = response.data.filter((post) => post.categoria.includes(1));
+            const membrosFiltrados = response.data.filter((post) => post.categoria.includes(1)); // filtra por categoria (1 == fiscal )
             setMembros(membrosFiltrados);
           } catch (error) {
             console.error('Erro ao buscar membros:', error);

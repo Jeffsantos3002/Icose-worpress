@@ -3,7 +3,10 @@
 function api_membros($request){
     $args = array(
         'post_type' => 'membro',
-        'posts_per_page' => 20 // Limita a consulta a um post.
+        'posts_per_page' => -1, // Limita a consulta a um post.
+        'meta_key'       => 'ordem',
+        'orderby'        => 'meta_value_num',  // Ordenar numericamente
+        'order'          => 'ASC',  // Ou 'DESC' se desejar ordenar de forma decrescente
     );
 
     $consulta = new WP_Query($args);
@@ -17,12 +20,13 @@ function api_membros($request){
             $titulo   = get_the_title();
             $conteudo = wp_strip_all_tags(get_the_content());;
             $categorias = wp_get_post_categories(get_the_ID());
-
+            $ordem = get_post_meta(get_the_ID(), 'ordem', true);
 
             $membro = array(
                 'titulo'   => $titulo,
                 'conteudo' => $conteudo,
                 'categoria' => $categorias,
+                'ordem' => $ordem,
             );
            
             $membros[] = $membro;

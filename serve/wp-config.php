@@ -97,3 +97,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Configura as variáveis e arquivos do WordPress. */
 require_once ABSPATH . 'wp-settings.php';
+
+if (!defined('WP_POST_REVISIONS')) {
+    define('WP_POST_REVISIONS', false);
+}

@@ -55,7 +55,40 @@ function custom_post_type_membros() {
 }
 add_action( 'init', 'custom_post_type_membros', 0 );
 
-function remover_suporte_categoria() {
-    remove_post_type_support('membros', 'category');
+
+
+// cria campo personalizado (custom field) para o tipo de post 
+function add_custom_meta_box() {
+    add_meta_box(
+        'ordem',         // ID único da metabox
+        'Ordem de exibição', // Título da metabox
+        'display_custom_meta_box', // Função de callback para exibir o conteúdo da metabox
+        'membro',               // Tipo de post ao qual a metabox deve ser adicionada
+        'normal',               // Contexto (normal, avançado, lateral)
+        'high'                  // Prioridade (alto, baixo)
+    );
 }
-add_action('init', 'remover_suporte_categoria');
+add_action('add_meta_boxes', 'add_custom_meta_box');
+
+// Função de callback para exibir o conteúdo da metabox
+function display_custom_meta_box($post) {
+    // Recupera o valor atual do campo 'ordem'
+    $ordem = get_post_meta($post->ID, 'ordem', true);
+
+    // Exibe o campo 'ordem' na metabox
+    ?>
+    <label for="ordem">Ordem:</label>
+    <input type="number" id="ordem" name="ordem" value="<?php echo esc_attr($ordem); ?>" placeholder ="1-10" />
+    <?php
+}
+
+// Salva os dados da metabox quando o post é salvo
+function save_custom_meta_box($post_id) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+
+    if ((isset($_POST['ordem']) && $_POST['ordem']) !== '' && ctype_digit($_POST['ordem'])) {
+        update_post_meta($post_id, 'ordem', intval($_POST['ordem']));
+           
+   }
+}
+add_action('save_post', 'save_custom_meta_box');

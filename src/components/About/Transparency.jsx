@@ -1,6 +1,23 @@
 import Title from "@/components/Title";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Transparency() {
+  const [transparencia, setTransparencia] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const url = `${import.meta.env.VITE_REACT_APP_API_ROOT}/transparencia`;
+            const response = await axios.get(url);
+            setTransparencia(response.data.conteudo);
+          } catch (error) {
+            console.error('Erro ao buscar membros:', error);
+          }
+        };
+    
+        fetchData();
+      }, []);
+   
   return (
     <div className="flex flex-col space-y-10">
       <Title
@@ -8,9 +25,10 @@ function Transparency() {
         content="Transparência"
       />  
       <div className="space-y-5">
-        <p>Transparência é um dos valores do ICOSE. Acreditamos que prestações de contas claras e acessíveis contribuem para a  construção de relações duradouras baseadas na confiança e credibilidade.</p>
-        <p>Não basta ser honesto, temos que mostrar que somos honestos!</p>
-        <p>Demonstrativos financeiros e de atividades serão postados aqui.</p>
+        <div>
+          {transparencia}
+        </div>
+        
       </div>
     </div>
   );

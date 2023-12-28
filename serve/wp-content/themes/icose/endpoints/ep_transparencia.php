@@ -14,9 +14,13 @@ function api_transparencia($request){
             $consulta->the_post();
 
             $conteudo = get_the_content();
-           
+
+            // Di vide a string em um array usando o delimitador
+            $delimiter = "\r";
+            $texto = explode($delimiter, $conteudo);
+            
             $transparencia = array(
-                'conteudo' => $conteudo,
+                'conteudo' => $texto,
             );
            
         }

@@ -11,6 +11,7 @@ function FiscalCouncilList () {
             const response = await axios.get(url);
             const membrosFiltrados = response.data.filter((post) => post.categoria.includes(1)); // filtra por categoria (1 == fiscal )
             setMembros(membrosFiltrados);
+            console.log(response)
           } catch (error) {
             console.error('Erro ao buscar membros:', error);
           }

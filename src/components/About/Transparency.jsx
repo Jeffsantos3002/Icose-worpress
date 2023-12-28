@@ -25,10 +25,11 @@ function Transparency() {
         content="Transparência"
       />  
       <div className="space-y-5">
-        <div>
-          {transparencia}
-        </div>
-        
+        {transparencia.map((e, index)=>(
+          <div key={index}>
+            <p> {e} </p>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -24,11 +24,11 @@ function Transparency() {
         color = "#365314"
         content="Transparência"
       />  
-      <div className="space-y-5">
+      <div >
         {transparencia.map((e, index)=>(
-          <div key={index}>
-            <p> {e} </p>
-          </div>
+          // renderiza a string do json para html
+          <div key={index} className="space-y-5" dangerouslySetInnerHTML={{ __html: e }}> 
+          </div> 
         ))}
       </div>
     </div>

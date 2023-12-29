@@ -25,7 +25,8 @@ function FiscalCouncilList () {
           <MemberCard
             key={index}
             name={e.titulo}
-            text={e.conteudo}
+            text= {e.conteudo}
+   
           />
         ))
     

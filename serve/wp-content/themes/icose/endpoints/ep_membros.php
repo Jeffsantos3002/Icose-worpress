@@ -18,7 +18,7 @@ function api_membros($request){
             $consulta->the_post();
 
             $titulo   = get_the_title();
-            $conteudo = wp_strip_all_tags(get_the_content());;
+            $conteudo = get_the_content();
             $categorias = wp_get_post_categories(get_the_ID());
             $ordem = get_post_meta(get_the_ID(), 'ordem', true);
 

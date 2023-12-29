@@ -86,9 +86,9 @@ function display_custom_meta_box($post) {
 function save_custom_meta_box($post_id) {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
 
-    if ((isset($_POST['ordem']) && $_POST['ordem']) !== '' && ctype_digit($_POST['ordem'])) {
+    // Verifica se 'ordem' está definido em $_POST e se é um número
+    if (isset($_POST['ordem']) && $_POST['ordem'] !== '' && ctype_digit($_POST['ordem'])) {
         update_post_meta($post_id, 'ordem', intval($_POST['ordem']));
-           
-   }
+    }
 }
 add_action('save_post', 'save_custom_meta_box');

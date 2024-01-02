@@ -34,7 +34,7 @@ function custom_post_type_transparencia() {
         'label'                 => __( 'Transparência', 'text_domain' ),
         'description'           => __( 'Transparência da instituição', 'text_domain' ),
         'labels'                => $labels,
-        'supports'              => array( 'title', 'editor', 'thumbnail'),
+        'supports'              => array( 'title', 'editor'),
         'taxonomies'            => array('tags'),
         'hierarchical'          => false,
         'public'                => true,

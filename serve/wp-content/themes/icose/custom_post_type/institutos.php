@@ -34,7 +34,7 @@ function custom_post_type_instituto() {
         'label'                 => __( 'Instituto', 'text_domain' ),
         'description'           => __( 'Instituto da instituição', 'text_domain' ),
         'labels'                => $labels,
-        'supports'              => array( 'title', 'editor' ),
+        'supports'              => array( 'title', 'editor', 'thumbnail' ),
         'taxonomies'            => array('tags'),
         'hierarchical'          => false,
         'public'                => true,

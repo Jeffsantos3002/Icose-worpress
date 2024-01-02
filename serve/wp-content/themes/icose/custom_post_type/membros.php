@@ -34,7 +34,7 @@ function custom_post_type_membros() {
         'label'                 => __( 'Membro', 'text_domain' ),
         'description'           => __( 'Membros da instituição', 'text_domain' ),
         'labels'                => $labels,
-        'supports'              => array( 'title', 'editor', 'thumbnail'),
+        'supports'              => array( 'title', 'editor'),
         'taxonomies'            => array('tags', 'category'),
         'hierarchical'          => false,
         'public'                => true,

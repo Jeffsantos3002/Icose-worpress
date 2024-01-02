@@ -13,7 +13,7 @@ function Community() {
         <section className="flex flex-col gap-12">
           <Title content="Institutos Comunitários" />
           <div className="flex flex-col gap-2">
-            <AccordionItem icon={<MapPinLine size={28} />} title="Instituições locais" >
+            <AccordionItem icon={<MapPinLine style={{ width: '28px', height: '28px' }}/>} title="Instituições locais" >
               <p>
                 As organizações dedicam-se à melhoria da qualidade de vida de comunidades situadas em uma região geográfica bem delimitada, da qual são originárias e na qual estão estabelecidas.
               </p>

@@ -6,13 +6,14 @@ function api_instituto($request){
         'posts_per_page' => 10, // Limita a consulta a um post.
     );
 
+    $institutos = array(); 
     $consulta = new WP_Query($args);
 
     if ($consulta->have_posts()) {
 
         while ($consulta->have_posts()) {
             $consulta->the_post();
-            $post_id = $post->ID;
+            $post_id = get_the_ID();
 
             $iconID = get_post_thumbnail_id($post_id);
             $icon = wp_get_attachment_image_src($iconID,'icon_comunitario'); // consulta icon no db.
@@ -28,9 +29,10 @@ function api_instituto($request){
                 'icon' => $icon,
             );
            
+            $institutos[] = $instituto;
         }
         wp_reset_postdata();
-        return rest_ensure_response($instituto);
+        return rest_ensure_response($institutos);
     } else {
         return rest_ensure_response(array('message' => 'Nenhum post encontrado na api.'));
     }

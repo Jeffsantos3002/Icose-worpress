@@ -5,6 +5,7 @@ $template_directory = get_template_directory();
 require_once ($template_directory . '/custom_post_type/membros.php');
 require_once ($template_directory . '/custom_post_type/transparencia.php');
 require_once ($template_directory . '/custom_post_type/institutos.php');
+require_once ($template_directory . '/custom_post_type/institutos_brasil.php');
 
 //api
 require_once($template_directory . '/endpoints/ep_transparencia.php' );
